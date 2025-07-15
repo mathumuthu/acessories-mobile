@@ -1,0 +1,606 @@
+/* Variables */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #40c916;
+    --dark-color: #bf7f08;
+    --light-color: #f8f9fa;
+    --text-color: #333;
+    --white-color: #ffffff;
+    --border-color: #3f4b58;
+    --heading-font: 'Arial', sans-serif;
+    --body-font: 'Helvetica Neue', sans-serif;
+    --spacing-unit: 1rem; /* Base for padding/margin */
+}
+
+
+
+/* Base Styles & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    color: var(--dark-color);
+    margin-bottom: var(--spacing-unit);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below images */
+}
+
+/* Utility Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto ;
+    padding: 0 1.5rem; /* Padding on sides for smaller screens */
+}
+
+.section-padding {
+    padding: 2rem 0; /* Top and bottom padding for sections */
+}
+
+.bg-light {
+    background-color: var(--light-color);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none; /* Ensure no underline */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%); /* conceptual Sass darken */
+    background-color: #0056b3; /* direct hex for plain CSS */
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    margin-left: 1rem;
+}
+
+.btn-secondary:hover {
+    background-color: darken(var(--secondary-color), 10%); /* conceptual Sass darken */
+    background-color: #5c636a; /* direct hex for plain CSS */
+    text-decoration: none;
+}
+
+.btn-lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+}
+
+/* Header & Navigation */
+.header {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--white-color);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 3%;
+}
+
+.nav-menu a {
+    color: var(--white-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-toggle {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--white-color);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1500x800?text=Hero+Background') no-repeat center center/cover;
+    color: var(--white-color);
+    text-align: center;
+    padding: 8rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh; /* Make it fill a good portion of the viewport */
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--white-color);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Features Section */
+.features h2, .about h2, .services h2, .testimonials h2, .contact h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-item {
+    background-color: var(--white-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-item .icon-large {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* About Section (Two-column layout example) */
+.content-two-column {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 2rem;
+    align-items: center;
+}
+
+.content-two-column .image-wrapper,
+.content-two-column .text-wrapper {
+    flex: 1; /* Each takes equal space */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+.content-two-column .image-wrapper img {
+    border-radius: 8px;
+}
+
+/* Services Section */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.service-item {
+    background-color: var(--white-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    border-bottom: 4px solid var(--primary-color); /* Highlight */
+}
+
+.service-item .icon-small {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-item h3 {
+    font-size: 1.4rem;
+}
+
+
+/* Testimonials Section */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.testimonial-item {
+    background-color: var(--white-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.testimonial-item p {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: #555;
+    flex-grow: 1; /* Allows text to take up available space */
+}
+
+.client-info {
+    margin-top: auto; /* Pushes client info to the bottom */
+}
+
+.client-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.8rem;
+    border: 3px solid var(--primary-color);
+}
+
+.client-info h4 {
+    margin-bottom: 0.3rem;
+    font-size: 1.2rem;
+}
+
+.client-info span {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Call to Action Section */
+.cta {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.cta h2 {
+    color: var(--white-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+
+/* Contact Section */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--white-color);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: var(--body-font); /* Inherit font */
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-form .btn-primary {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+
+/* Footer */
+.footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 3rem 0 1rem;
+    font-size: 0.9rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-col h3 {
+    color: var(--white-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-col ul {
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-col ul li a {
+    color: var(--light-color);
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer-col p {
+    margin-bottom: 0.5rem;
+}
+
+.social-links a {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1rem;
+    margin-top: 2rem;
+}
+
+/* Scroll to Top Button */
+.scroll-top-btn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 999;
+}
+
+.scroll-top-btn:hover {
+    background-color: darken(var(--primary-color), 10%); /* conceptual Sass darken */
+    background-color: #0056b3; /* direct hex for plain CSS */
+    transform: translateY(-3px);
+}
+
+
+/* Responsive Design (Media Queries) */
+@media (max-width: 768px) {
+    .header .container {
+        flex-wrap: wrap; /* Allows logo and toggle to wrap */
+    }
+
+    .nav-menu {
+        flex-basis: 100%; /* Take full width */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        background-color: var(--dark-color); /* Ensures menu background is consistent */
+    }
+
+    .nav-menu.active {
+        max-height: 300px; /* Adjust as needed */
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    .nav-menu ul li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Animation for the hamburger icon */
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .hero {
+        padding: 5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-secondary {
+        margin-left: 0; /* Remove margin on smaller screens */
+        margin-top: 1rem; /* Add top margin */
+    }
+
+    .section-padding {
+        padding: 3rem 0;
+    }
+
+    .feature-item, .service-item, .testimonial-item {
+        padding: 1.5rem;
+    }
+
+    .content-two-column .image-wrapper,
+    .content-two-column .text-wrapper {
+        min-width: unset; /* Remove min-width on small screens for better stacking */
+        width: 100%; /* Take full width */
+    }
+
+    .content-two-column .image-wrapper {
+        order: -1; /* Puts image above text on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .btn-lg {
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr; /* Stack footer columns */
+    }
+    .footer-col {
+        text-align: center;
+    }
+    .social-links {
+        justify-content: center; /* Center social icons */
+        display: flex;
+    }
+}
